@@ -94,7 +94,7 @@ math.factorial(num);</code>
 				</section>
 
 				<section>
-					<h2><a href="exercises/videoplayer_library.html">Exercise Time!</a></h2>
+					<h2><a href="exercises/videoplayer_library.html">Let's Develop It!</a></h2>
 				</section>
 
 				<section>
@@ -256,7 +256,7 @@ $('div.header').append(newP);</code>
 				</section>
 
 				<section>
-					<h2><a href="exercises/domaccess.html">Exercise Time!</a></h2>
+					<h2><a href="exercises/domaccess.html">Let's Develop It!</a></h2>
 				</section>
 
 				<section>
@@ -401,7 +401,157 @@ $('a').css({'color': 'purple'});</code></pre>
 				</section>
 
 				<section>
-					<h2><a href="exercises/videoplayer_jquery.html">Exercise Time!</a></h2>
+					<h2><a href="exercises/videoplayer_jquery.html">Let's Develop It!</a></h2>
+				</section>
+
+				<section>
+					<h1>Break</h1>
+				</section>
+
+				<section>
+					<h2>Events</h2>
+					<pre><code class="javascript">var onButtonClick = function() {
+  console.log('clicked!');
+};
+
+$('button').on('click', onButtonClick);</code></pre>
+					<pre><code class="javascript">$('button').on('click', function () {
+  console.log('clicked!');
+});
+
+$('button').click(onButtonClick)</code></pre>
+					<p><a href="http://api.jquery.com/category/events/keyboard-events/">Keyboard Events</a>
+						<code>'keydown'</code>
+						<code>'keypress'</code>
+						<code>'keyup'</code>
+					</p>
+					<p><a href="http://api.jquery.com/category/events/mouse-events/">Mouse Events</a>
+						<code>'click'</code>
+						<code>'mousedown'</code>
+						<code>'mouseup'</code>
+						<code>'mousemove'</code>
+					</p>
+					<p><a href="http://api.jquery.com/category/events/form-events/">Form Events</a>
+						<code>'change'</code>
+						<code>'focus'</code>
+						<code>'blur'</code>
+					</p>
+				</section>
+
+				<section>
+					<h2>Remember: Callbacks</h2>
+					<img src="images/ryan-gosling-callback.jpg" alt="">
+				</section>
+
+				<section>
+					<h2>Events</h2>
+					<p>Arguments get applied in callbacks<p>
+					<pre><code class="javascript">var myCallback = function(event) {
+	console.log(event);
+};
+
+$('p').on('mouseenter', myCallback);</code></pre>
+					<p>Preventing Default Events</p>
+					<pre><code class="javascript">$('a').on('click', function (event) {
+	event.preventDefault();
+	console.log('Not going there!');
+});</code></pre>
+<pre><code class="javascript">$('form').on('submit', function (event) {
+	event.preventDefault();
+	console.log('Not submitting, time to validate!');
+});</code></pre>
+				</section>
+
+				<section>
+					<h2>Effects &amp; Animation</h2>
+					<pre><code class="javascript">$('#error').toggle(1000);
+
+$('#error').fadeIn();
+
+$('#error').show(1000, function(){
+	$(this).addClass('redText')
+});</code></pre>
+				</section>
+
+				<section>
+					<h2><a href="exercises/exercise_events.html">Let's Develop It!</a></h2>
+				</section>
+
+				<section>
+					<h2>jQuery Patterns and Anti-Patterns</h2>
+					<p><strong>Pattern: </strong>name variables with <code>$</code></p>
+					<pre><code class="javascript">$myVar = $('#myNode');</code></pre>
+					<p><strong>Pattern: </strong>bind events to the document</p>
+					<pre><code class="javascript">$(document).on('click', 'a', myCallback);</code></pre>
+				</section>
+
+				<section>
+					<h2>jQuery Patterns and Anti-Patterns</h2>
+					<p><strong>Pattern: </strong> store references to callback functions</p>
+					<pre><code class="javascript">var myCallback = function(argument) {
+// do something cool
+};
+
+$(document).on('click', 'p', myCallback);</code></pre>
+					<p><strong>Anti-pattern: </strong>anonymous functions</p>
+					<pre><code class="javascript">$(document).on('click', 'p', function(argument) {
+// do something anonymous
+});</code></pre>
+				</section>
+
+				<section>
+					<h2>Chaining</h2>
+					<pre><code class="javascript">banner.css('color', 'red');
+banner.html('Welcome!');
+banner.show();</code></pre>
+					<p>Is the same as:</p>
+					<pre><code class="javascript">banner.css('color', 'red').html('Welcome!').show();</code></pre>
+					<p>Is the same as:</p>
+					<pre><code class="javascript">banner.css('color', 'red')
+	.html('Welcome!')
+	.show();</code></pre>
+				</section>
+
+				<section>
+					<h2>DOM Readiness</h2>
+					<p><strong>Broken code: </strong> DOM manipulation and event binding in the <code>&lt;head&gt;</code></p>
+					<pre><code class="html">&lt;head&gt;
+  &lt;script&gt;
+    $('body').append( myNode );
+  &lt;/script&gt;
+&lt;/head&gt;</code></pre>
+					<p><strong>Pattern: </strong> If you <em>need</em> to load a script in the <code>&lt;head&gt;</code>, wait for the rest of the DOM to be ready before executing.</p>
+					<pre><code class="html">&lt;head&gt;
+  &lt;script&gt;
+    $(document).ready(function() {
+      // do something when the DOM is fully loaded
+    });
+  &lt;/script&gt;
+&lt;/head&gt;
+</code></pre>
+				</section>
+
+				<section>
+					<h2>jQuery</h2>
+					<br>
+					<h3>&hellip;is great, but&hellip;</h3>
+					<br>
+					<h3>Don't become jQuery-dependent!</h3>
+				</section>
+
+				<section>
+					<h2>jQuery Documentation</h2>
+					<p><a href="https://api.jquery.com/">api.jquery.com</a></p>
+				</section>
+
+				<section>
+					<h1>Questions?</h1>
+				</section>
+
+				<section>
+					<h2>Post-class survey</h2>
+					<p>Help us make the next class even better!</p>
+					<p><a href="http://goo.gl/p7NSl1">http://goo.gl/p7NSl1</a></p>
 				</section>
 			</div><!-- end of div slides-->
 
